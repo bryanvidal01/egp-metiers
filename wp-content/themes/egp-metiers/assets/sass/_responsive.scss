@@ -1,0 +1,355 @@
+@media only screen and (max-width: 768px) {
+
+  html, body{
+    width: 100vw;
+    overflow: auto;
+  }
+
+  .pointer{
+    display: none;
+  }
+
+  .header-logo svg{
+    width: 20vw;
+  }
+
+  .title.big{
+    font-size: 14.7vw;
+  }
+
+  .title.medium{
+    font-size: 10vw;
+    line-height: 1em;
+  }
+
+  body{
+    overflow: visible;
+  }
+
+  .has-border{
+    border-bottom: 4px solid #000;
+  }
+
+  header{
+    padding: 20px 0px;
+
+    .intro{
+      display: none;
+    }
+    .select-theme{
+      display: none;
+    }
+  }
+
+  section.intro-page.home{
+    padding: 160px 15px 40px;
+
+    .title.big{
+      font-size: 16.7vw;
+    }
+    img{
+      display: none;
+    }
+  }
+
+
+  .image-follow .follow-image{
+    display: none;
+  }
+
+  .skills{
+    .title{
+      text-align: center;
+      display: block;
+      font-size: 25vw;
+      line-height: 1em;
+      padding-top: 30px;
+    }
+  }
+
+  .section-video-full, section.skills{
+    padding: 40px 0;
+  }
+
+  .section-video-full{
+    video{
+      display: none;
+    }
+    .image-background-mobile{
+      position: absolute;
+      width: 100%;
+      height: 150%;
+      display: block;
+      top: 0;
+      left: 0;
+      margin-top: -100%;
+      object-fit: cover;
+    }
+  }
+
+  section.latest-work{
+    padding: 40px 0;
+  }
+
+  .push-project{
+    padding: 30px;
+
+
+    .background-project{
+      margin-top: -80%;
+    }
+
+    .info-project{
+      margin-top: 30px;
+    }
+    .image-shadow{
+      max-width: 80%;
+      display: block;
+      margin: 30px auto;
+    }
+
+    .content-project{
+      margin-top: 10px;
+      padding-left: 0;
+
+      .button-round{
+        display: block;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  .more-studies{
+    margin-top: 70px;
+    margin-bottom: 40px;
+  }
+
+  footer{
+    padding: 0;
+
+    .nav-footer{
+      margin-bottom: 40px;
+    }
+
+    .text-footer-1{
+      margin-bottom: 30px;
+    }
+    .text-footer-2{
+      margin-bottom: 30px;
+    }
+
+    .align-bottom-absolute{
+      position: relative;
+      bottom: 0;
+      margin-bottom: 30px;
+      display: none;
+    }
+
+    .title.big{
+      font-size: 30.7vw;
+      line-height: 1em;
+      padding-bottom: 30px;
+    }
+
+    .container-year .logo-year{
+      top: 0;
+      svg{
+        width: 30vw;
+        height: 30vw;
+      }
+    }
+  }
+
+
+
+  // MENU
+  .navigation-container{
+    padding: 100px 0px 60px;
+    overflow: scroll;
+    .title.medium{
+      font-size: 18vw;
+    }
+    .fade-1{
+      margin-bottom: 20px;
+    }
+    .align-container-menu{
+      display: block;
+      overflow: auto;
+      height: auto;
+    }
+
+
+    .info-left, .info-right{
+      position: static;
+      padding-left: 15px;
+      margin-top: 20px;
+    }
+
+    .info-left{
+      margin-top: 30px;
+    }
+
+    .navigation-cases{
+      margin-top: 20px;
+    }
+  }
+
+
+  // CASE
+
+  .intro-page.case{
+    padding: 120px 15px 80px;
+
+    .image-case{
+      position: static;
+      width: 100%;
+      margin-bottom: 140px;
+      transform: translateY(10px);
+
+      .button-round{
+        top: 90%;
+        right: 0;
+      }
+    }
+  }
+
+  .intro-case-text,
+  .case-image-full,
+  .case-title-text,
+  .case-two-image,
+  .case-title-text-category,
+  .case-carrousel,
+  .case-two-image-not-aligned,
+  .case-image-full-container,
+  .three-cols-images,
+  .case-resume,
+  .list-case{
+    padding: 0 0;
+    margin-bottom: 60px;
+  }
+
+  .intro-page.case.archive-case{
+    .image-case{
+      margin-bottom: 30px;
+    }
+  }
+  .case-title-text{
+    .text-content{
+      max-width: 100%;
+      margin-top: 30px;
+    }
+  }
+
+  .case-two-image{
+    .container-image-parallax{
+      margin-bottom: 15px;
+    }
+  }
+
+  .case-carrousel .slick-dots{
+    margin-top: 40px;
+    width: calc( 100% - 30px );
+  }
+
+  .case-title-text-category .text-content{
+    margin-top: 30px;
+  }
+
+  .case-two-image-not-aligned{
+    .img-2{
+      margin-top: 30px;
+    }
+  }
+
+  .slick-arrow{
+    display: none !important;
+  }
+  .case-image-full-container{
+
+  }
+
+  .three-cols-images{
+    .parallax-item{
+      transform: translate(0, 0) !important;
+    }
+
+    img{
+      margin-bottom: 15px;
+    }
+
+    .hide-space{
+      display: none;
+    }
+  }
+
+  .case-resume{
+    .container-info-resume .button-round{
+      display: block;
+      margin: 30px auto;
+    }
+  }
+
+  footer.single {
+    padding-top: 30px;
+    .image-footer {
+      margin-top: -100%;
+    }
+
+    .button-round{
+      margin-top: 30px;
+    }
+
+    .paginate{
+      margin-bottom: 30px;
+      padding-bottom: 60px;
+    }
+  }
+
+
+  // About
+
+  section.intro-page.about{
+    padding: 120px 15px 80px;
+
+    img{
+      display: none;
+
+      &.img-3{
+        display: none;
+      }
+    }
+  }
+
+  section.work-with-me, section.about-me, section.one-more-thing{
+    padding: 0 0;
+    margin-bottom: 60px;
+  }
+
+  section.about-me{
+    .info-about-me{
+      padding-top: 30px;
+    }
+  }
+
+  section.work-with-me .info-about-me{
+    padding-top: 30px;
+  }
+
+  section.one-more-thing{
+    margin-bottom: 60px;
+    .no-margin{
+      margin-top: 30px;
+    }
+    .logo-ck-about{
+      margin-bottom: 50px;
+    }
+
+    .image-one-more-thing{
+      margin-bottom: 50px;
+      img{
+        width: 100%;
+      }
+    }
+  }
+
+}

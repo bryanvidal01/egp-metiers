@@ -1,0 +1,272 @@
+.pointer{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  pointer-events: none;
+  mix-blend-mode: difference;
+  background: #fff;
+  z-index: 9000;
+  position: fixed;
+  opacity: 0 !important;
+  transform:translate(-50%, -50%);
+  transition: .3s opacity;
+}
+.navigation-container{
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  display: block;
+  background: #1c1c1c;
+  visibility: hidden;
+  padding: 50px 60px;
+  color: $beige;
+  transition: opacity .4s;
+  opacity: 0;
+
+  .content-menu{
+    width: 100%;
+  }
+
+
+  .text-location{
+    span{
+      padding-right: 18px;
+    }
+  }
+
+  .align-container-menu{
+    height: calc( 100vh - 255px );
+    display: flex;
+    align-items: center;
+  }
+
+  .navigation-cases{
+    margin-top: 40px;
+    li{
+      display: block;
+
+      a{
+        display: inline-block;
+        padding: 5px 0;
+      }
+    }
+  }
+
+  .info-left{
+    bottom: 60px;
+    left: 60px;
+    position: absolute;
+  }
+
+  .info-right{
+    bottom: 60px;
+    right: 60px;
+    position: absolute;
+
+    .social-menu{
+      margin-bottom: 0;
+      li{
+        display: inline-block;
+
+        &:before{
+          content: '/';
+          display: inline-block;
+          padding: 0 5px;
+          font-size: 14px;
+          position: relative;
+          top: -2px;
+        }
+        &:first-child{
+          &:before{
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  .fade-up{
+    opacity: 0;
+    display: block;
+    transform: translateY(90px);
+    transition: .6s;
+  }
+}
+
+
+
+button.navigation{
+  width: 70px;
+  height: 70px;
+  border: 1.1px rgba(#FFF,.7) solid;
+  border-radius: 80px;
+  background: transparent;
+  position: relative;
+  display: inline-block;
+  margin-top: -4px;
+
+  &:before{
+    content: 'Navigation';
+    font-family: $sans_serif_regular;
+    font-size: 14px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #FFF;
+    right: calc(100% + 20px);
+  }
+
+  .bar{
+    width: 2px;
+    height: 2px;
+    background: #FFF;
+    position: absolute;
+    border-radius: 50%;
+    top: 31px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    &:nth-child(1), &:nth-child(4), &:nth-child(7){
+      margin-left: -5px;
+    }
+    &:nth-child(3), &:nth-child(6), &:nth-child(9){
+      margin-left: 5px;
+    }
+
+    &:nth-child(1), &:nth-child(2), &:nth-child(3){
+      top: 28px;
+    }
+    &:nth-child(4), &:nth-child(5), &:nth-child(6){
+      top: 33px;
+    }
+    &:nth-child(7), &:nth-child(8), &:nth-child(9){
+      top: 38px;
+    }
+
+
+  }
+}
+
+
+.navigation-open{
+  overflow: hidden;
+
+  .pointer{
+    opacity: 1 !important;
+  }
+
+  .navigation-container{
+    display: block;
+    position: fixed;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .fade-up{
+    opacity: 1;
+    transform: translateY(0px);
+
+    &.fade-1{
+      transition-delay: .3s;
+    }
+
+    &.fade-2{
+      transition-delay: .4s;
+    }
+  }
+
+  header{
+    position: fixed;
+    z-index: 300;
+  }
+
+  header{
+    .intro{
+      color: $beige;
+    }
+  }
+
+  button.navigation{
+    border: solid 1.1px rgba(249, 245, 233, 0.2);
+
+    &:before{
+      color: $beige;
+    }
+    .bar{
+      background: $beige;
+
+      &:nth-child(1){
+        transform: rotate(45deg) translate(-5px, 3px);
+        top: 35px;
+      }
+
+      &:nth-child(2){
+        transform: rotate(-45deg) translate(-2px, -6px);
+      }
+    }
+  }
+
+  .header-logo{
+    svg{
+      g{
+        fill: $beige;
+      }
+    }
+  }
+}
+
+
+.navigation-close{
+
+  .pointer{
+    opacity: 0 !important;
+  }
+
+  button.navigation{
+    color: #000;
+    transition-delay: .4s;
+    &:before{
+      color: #000;
+      transition-delay: .4s;
+    }
+
+    .bar{
+      background: #000;
+      transition-delay: .4s;
+    }
+  }
+
+  .fade-up{
+    opacity: 0;
+    display: block;
+    transform: translateY(90px);
+    transition: .6s;
+
+    &.fade-1{
+      transition-delay: 0s;
+    }
+
+    &.fade-2{
+      transition-delay: .1s;
+    }
+  }
+
+  .navigation-container{
+    opacity: 0;
+    transition-delay: .45s;
+  }
+
+  .header-logo svg g{
+    fill: #171717;
+    transition: .5s;
+    transition-delay: .6s;
+  }
+
+  header .intro{
+    color: #000;
+    transition: .5s;
+    transition-delay: .6s;
+  }
+}

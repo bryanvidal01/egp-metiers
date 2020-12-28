@@ -1,0 +1,111 @@
+section.intro-page{
+  padding: 0 60px 80px;
+  padding-top: 300px;
+  overflow: hidden;
+  position: relative;
+
+  &.home{
+    padding-top: 200px;
+    .title{
+      margin-top: -2vw;
+      line-height: 1;
+    }
+
+    h2{
+      &.last{
+        margin-top: -2vw;
+        .title{
+          line-height: 1.2;
+        }
+      }
+    }
+  }
+
+  &:before{
+    content: '';
+    width: 100vw;
+    height: 100vw;
+    position: absolute;
+    border: solid 1px #3d3d3d;
+    opacity: 0.2;
+    border-radius: 50%;
+    top: -10vw;
+    right: -42%;
+    z-index: 0;
+    pointer-events: none;
+  }
+  &:after{
+    content: '';
+    width: 64vw;
+    height: 64vw;
+    position: absolute;
+    border: solid 1px #3d3d3d;
+    opacity: 0.2;
+    border-radius: 50%;
+    top: -10vw;
+    right: -20vw;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .world-2{
+    position: relative;
+  }
+
+  .img-1{
+    width: 8vw;
+  }
+
+  .img-2{
+    width: 9vw;
+    position: relative;
+  }
+
+
+  .img-3{
+    position: relative;
+    left: 50%;
+    display: block;
+    width: 7vw;
+  }
+
+  .title{
+    z-index: 3;
+    position: relative;
+    line-height: 15vw;
+    margin-top: -7vw;
+  }
+
+  .title-parallax{
+    display: inline-block;
+  }
+
+  h2.last{
+    margin-top: -6vw;
+  }
+
+
+  &.about{
+    padding-top: 11vw;
+    .title{
+      margin-top: 0;
+
+      &.end{
+        margin-top: -3vw;
+      }
+    }
+  }
+
+  &.case{
+    .title{
+      line-height: 13vw;
+      margin-top: 0vw;
+    }
+
+    .has-border{
+      &:after{
+        display: none;
+      }
+    }
+  }
+}

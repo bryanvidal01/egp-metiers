@@ -1,0 +1,54 @@
+header{
+  padding: 70px 65px;
+  position: fixed;
+  top: 0;
+  z-index: 300;
+  left: 0;
+  width: 100%;
+  transition: .3s;
+
+  .intro{
+    margin-top: 18px;
+  }
+  .select-theme{
+    padding-top: 17px;
+    display: block;
+  }
+
+  .header-logo,
+  .intro,
+  button.navigation{
+    position: relative;
+    z-index: 50;
+  }
+}
+
+
+.is-scrolled{
+  header{
+    background: #FFF;
+    padding: 20px 20px 12px;
+
+    .header-logo{
+      svg{
+        path{
+          fill: #000;
+        }
+      }
+    }
+  }
+
+  button.navigation{
+    border : 1.1px rgba(#000, 0.7) solid;
+    &:before{
+      color: #000;
+    }
+    .bar{
+      background: #000;
+    }
+  }
+
+  .info-bulle{
+    transform: translateX(0);
+  }
+}

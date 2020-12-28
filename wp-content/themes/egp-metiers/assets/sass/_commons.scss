@@ -1,0 +1,277 @@
+.serif{
+  font-family: $serif_thin;
+  font-size: 18px;
+  &.italic{
+    font-family: $serif_thin_italic;
+  }
+}
+
+
+img{
+  max-width: 100%;
+}
+.sans-serif{
+  font-family: $sans_serif_regular;
+
+
+  &.light{
+    font-family: $sans_serif_thin;
+  }
+
+  &.italic{
+    font-family: $sans_serif_thin_italic;
+    -webkit-font-smoothing : auto;
+  }
+}
+
+p{
+  font-size: 16px;
+  margin-bottom: 0;
+}
+
+.multiple-links{
+  li{
+    display: inline-block;
+    margin-right: 30px;
+  }
+}
+
+.text-center{
+  .link{
+    &.small-border{
+      &:after{
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+}
+.link{
+  margin-top: 15px;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: .03em;
+  border-bottom: 1px solid #000;
+
+  &.small-border{
+    position: relative;
+    border: 0;
+
+    &:after{
+      content: '';
+      width: 30px;
+      height: 2px;
+      margin-top: 8px;
+      background: #000;
+      display: block;
+    }
+  }
+}
+
+.bold{
+  letter-spacing: .03em;
+}
+
+.title{
+  &.big{
+    font-size: 6.5vw;
+    line-height: 5vw;
+    //line-height: 220px;
+  }
+
+  &.medium{
+    font-size: 4vw;
+    line-height: 3.5vw;
+    //line-height: 220px;
+  }
+
+  &.italic{
+    font-family: $sans_serif_thin_italic;
+  }
+  &.small{
+    font-size: 19px;
+    line-height: 22px;
+    margin-bottom: 9px;
+  }
+}
+
+.white{
+  color: #FFF;
+}
+
+.uppercase{
+  text-transform: uppercase;
+}
+
+
+.has-border{
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+
+  &:after{
+    content: '';
+    width: 100%;
+    height: .35vw;
+    background: #000;
+    position: absolute;
+    bottom: 0;
+    transform: translateX(-101%);
+    left: 0;
+  }
+
+  &.is-hover{
+    &:after{
+      transform: translateX(-0%);
+      transition: .5s;
+    }
+
+    &.is-out{
+      &:after{
+        transform: translateX(101%);
+        transition: .5s;
+      }
+    }
+  }
+}
+
+
+.container-image-parallax{
+  overflow: hidden;
+
+  img{
+    transform: scale(1.2);
+    margin-top: -8%;
+    position: relative;
+  }
+}
+
+// Color
+
+.color-beige{
+  color: $beige;
+}
+
+.background-beige{
+  background: $beige;
+}
+
+
+
+// Checkbox
+
+.container-checkbox{
+  position: relative;
+}
+[type="checkbox"] {
+  position: absolute;
+  left: 0;
+  opacity: 0.01;
+}
+
+[type="checkbox"] + label {
+  position: relative;
+  padding-left: 27px;
+  cursor: pointer;
+}
+
+[type="checkbox"]:not(:checked) + label::before,
+[type="checkbox"]:checked + label::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 5px;
+  width: 16px;
+  height: 10px;
+  border: 1px solid #171717;
+  background: transparent;
+  border-radius: 5px;
+  transition: all .275s;
+}
+
+/* Aspect de la coche */
+[type="checkbox"]:not(:checked) + label::after,
+[type="checkbox"]:checked + label::after {
+  content: '';
+  position: absolute;
+
+  width: 6px;
+  height: 6px;
+  background: #171717;
+  left: 2px;
+  top: 7px;
+  border-radius: 50%;
+  transition: .2s ease-in-out;
+  will-change: transform;
+}
+
+/* Aspect non cochée */
+[type="checkbox"]:not(:checked) + label::after {
+
+}
+
+/* Aspect cochée */
+[type="checkbox"]:checked + label::after {
+  opacity: 1;
+  transform: translate3D(6px, 0, 0);
+}
+
+
+.image-shadow{
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 1);
+  max-width: 100%;
+}
+
+
+.no-margin{
+  margin-bottom: 0;
+}
+
+
+.align-bottom-absolute{
+  position: absolute;
+  bottom: 0;
+}
+
+
+.link-externe{
+  top: -2px;
+  display: inline-block;
+  position: relative;
+  margin-left: 5px;
+  svg{
+    width: 12px;
+  }
+}
+
+.text-defilement{
+  width: 100%;
+  overflow: hidden;
+  .text-content{
+    font-size: 15vw;
+    font-weight: 600;
+    letter-spacing: -.02em;
+    color: #f1f1f1;
+    line-height: 15vw;
+    display: inline-block; /* important */
+    white-space: nowrap; /* important */
+    animation: defilement-rtl 30s infinite linear;
+  }
+}
+
+@keyframes defilement-rtl {
+  0% {
+    -webkit-transform: translate3d(50%,0,0);
+    transform: translate3d(50%,0,0);
+  }
+  100% {
+    -webkit-transform: translate3d(-100%,0,0);
+    transform: translate3d(-100%,0,0);
+  }
+}
+
+.underline{
+  text-decoration: underline;
+}
+
