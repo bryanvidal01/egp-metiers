@@ -7,12 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="<?php echo get_template_directory_uri();?>/assets/images/icon.png" />
     <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/assets/css/style.css">
-    <script src="<?php echo get_template_directory_uri(); ?>/assets/js/gsap.js"></script>
-    <script src="<?php echo get_template_directory_uri(); ?>/assets/js/MagicScroll.cjs.js"></script>
 
     <script  src='<?php echo get_template_directory_uri();?>/assets/js/jquery.js'></script>
+    <script  src='<?php echo get_template_directory_uri();?>/assets/js/lightbox-plus-jquery.min.js'></script>
     <script src="<?php echo get_template_directory_uri(); ?>/assets/js/slick.js"></script>
-    <script src="<?php echo get_template_directory_uri(); ?>/assets/js/ScrollTrigger.min.js"></script>
     <script  src='<?php echo get_template_directory_uri();?>/assets/js/app.js'></script>
     <?php wp_head(); ?>
 </head>
@@ -21,7 +19,6 @@
 
 
 <header>
-    <div class="pointer" id="pointer"></div>
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-6 col-6">
@@ -47,42 +44,12 @@
     </div>
 
     <div class="navigation-container">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-4 offset-6">
-                    <div class="container-checkbox select-theme text-location">
-                        <p class="sans-serif uppercase small intro">
-                            <span>Bordeaux</span><span>44° 50' 25 N</span><span>-0° 34' 49 O</span>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="align-container-menu">
             <div class="content-menu">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-sm-4">
-                            <a href="" class="fade-up fade-1">
-                                <div class="title serif medium italic">
-                                    About
-                                </div>
-                                <div class="title sans-serif medium light">
-                                    C&K.
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-sm-7">
-                            <div class="fade-up fade-2">
-                                <a href="">
-                                    <div class="title serif medium italic">
-                                        Cases
-                                    </div>
-                                    <div class="title sans-serif medium light">
-                                        Studies.
-                                    </div>
-                                </a>
-                            </div>
+                        <div class="col-sm-12 text-center list-menus">
+                            <?= wp_nav_menu(); ?>
                         </div>
                     </div>
                 </div>
@@ -90,36 +57,15 @@
         </div>
 
         <div class="info-left">
-            <p class="sans-serif uppercase small white">
-                AVAILABLE FOR FREELANCE WORK<br/>
-                <a href="mailto:" class="underline">SEND ME AN EMAIL</a>
-            </p>
-        </div>
-        <div class="info-right">
-            <ul class="social-menu">
+            <ul class="social-menu-icons">
                 <li>
-                    <a href="" class="sans-serif uppercase small white">
-                        Twitter
+                    <a href="">
+                        <?php lsd_get_template_part('icons','icon', 'facebook'); ?>
                     </a>
                 </li>
                 <li>
-                    <a href="" class="sans-serif uppercase small white">
-                        Instagram
-                    </a>
-                </li>
-                <li>
-                    <a href="" class="sans-serif uppercase small white">
-                        Behance
-                    </a>
-                </li>
-                <li>
-                    <a href="" class="sans-serif uppercase small white">
-                        Dribbble
-                    </a>
-                </li>
-                <li>
-                    <a href="" class="sans-serif uppercase small white">
-                        Journal
+                    <a href="">
+                        <?php lsd_get_template_part('icons','icon', 'instagram'); ?>
                     </a>
                 </li>
             </ul>

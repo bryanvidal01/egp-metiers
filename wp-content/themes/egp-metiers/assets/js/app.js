@@ -45,12 +45,7 @@ $(document).ready(function () {
                 $('body').addClass('navigation-open');
             }, 100);
         }else{
-            $('body').addClass('navigation-close');
-
-            setTimeout(function(){
-                $('body').removeClass('navigation-open');
-                $('body').removeClass('navigation-close');
-            }, 900);
+            $('body').removeClass('navigation-open');
         }
     });
 

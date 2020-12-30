@@ -18,7 +18,7 @@ define('PAGE_PROFESSEURS', get_field('params_page_professeur', 'option'));
 define('PAGE_COMPTE', get_field('params_page_compte', 'option'));*/
 
 
-//define('PAGE_ABOUT', get_field('params_page_about', 'option'));
+define('PAGE_GALERIE', get_field('params_galerie_id', 'option'));
 
 require_once( __DIR__ . '/inc/datatypes.php');
 require_once( __DIR__ . '/inc/configuration.php');

@@ -11,19 +11,6 @@ footer{
     }
   }
 
-  .social-menu-icons{
-    margin-top: 10px;
-    li{
-      display: inline-block;
-      margin-right: 8px;
-      svg{
-        width: 20px;
-
-        fill: #FFF !important;
-      }
-    }
-  }
-
   p{
     margin-bottom: 0;
   }
@@ -113,6 +100,19 @@ footer{
       text{
         fill: $beige;
       }
+    }
+  }
+}
+
+.social-menu-icons{
+  margin-top: 10px;
+  li{
+    display: inline-block;
+    margin-right: 8px;
+    svg{
+      width: 20px;
+
+      fill: #FFF !important;
     }
   }
 }

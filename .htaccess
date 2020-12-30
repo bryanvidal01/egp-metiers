@@ -5,11 +5,11 @@
 # Toute modification des directives entre ces marqueurs sera outrepassée.
 <IfModule mod_rewrite.c>
 RewriteEngine On
-RewriteBase /egp-metier/
+RewriteBase /egp-metiers/
 RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /egp-metier/index.php [L]
+RewriteRule . /egp-metiers/index.php [L]
 </IfModule>
 
 # END WordPress

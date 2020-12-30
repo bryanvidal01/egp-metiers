@@ -7,6 +7,45 @@ header{
   width: 100%;
   transition: .3s;
 
+  .list-menus{
+    vertical-align: top;
+    ul{
+      display: inline-block;
+      text-align: left;
+      margin: 0 50px;
+      vertical-align: top;
+
+      li{
+        display: inline-block;
+        text-align: left;
+        margin: 0 50px;
+        vertical-align: top;
+        a{
+          font-weight: 600;
+          text-transform: uppercase;
+          font-size: 17px;
+          margin-bottom: 15px;
+          display: block;
+        }
+      }
+      ul{
+        display: block;
+        margin: 0 0;
+
+        li{
+          display: block;
+          margin: 0;
+          a{
+            font-weight: 500;
+            text-transform: none;
+            font-size: 15px;
+            margin-bottom: 5px;
+          }
+        }
+      }
+    }
+  }
+
   .intro{
     margin-top: 18px;
   }

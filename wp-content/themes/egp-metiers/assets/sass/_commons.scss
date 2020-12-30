@@ -94,8 +94,15 @@ p{
     line-height: 22px;
     margin-bottom: 9px;
   }
+
+  &.little{
+    font-size: 14px;
+  }
 }
 
+.bold{
+  font-weight: 600;
+}
 .white{
   color: #FFF;
 }

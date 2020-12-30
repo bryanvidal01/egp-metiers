@@ -1,11 +1,11 @@
 {
-    "key": "group_5fc974b574736",
+    "key": "group_5febbc6fa4429",
     "title": "Correspondance de page",
     "fields": [
         {
-            "key": "field_5fc974bc97090",
-            "label": "Page about",
-            "name": "params_page_about",
+            "key": "field_5febbc78de935",
+            "label": "Page archive réalisations",
+            "name": "params_galerie_id",
             "type": "post_object",
             "instructions": "",
             "required": 0,
@@ -42,5 +42,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1607038192
+    "modified": 1609284769
 }

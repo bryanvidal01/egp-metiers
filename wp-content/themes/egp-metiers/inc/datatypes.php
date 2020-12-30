@@ -1,13 +1,13 @@
 <?php
 function wp_custom_post_type() {
-    register_post_type('works',
+    register_post_type('galerie',
         array(
             'labels'      => array(
-                'name'          => __('Réalisations', 'lsd_lang'),
-                'singular_name' => __('Réalisation', 'lsd_lang'),
+                'name'          => __('Galerie', 'lsd_lang'),
+                'singular_name' => __('Galerie', 'lsd_lang'),
             ),
             'public'      => true,
-            'has_archive' => true,
+            'has_archive' => false,
             'publicly_queryable'  => 'false'
         )
     );
