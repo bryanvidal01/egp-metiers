@@ -1,26 +1,44 @@
+<?php
+$content_title_text_image_title_1 = get_sub_field('content_title_text_image_title_1');
+$content_title_text_image_title_2 = get_sub_field('content_title_text_image_title_2');
+$content_title_text_image_text = get_sub_field('content_title_text_image_text');
+$content_title_text_image_image = get_sub_field('content_title_text_image_image');
+$content_title_text_image_image_url = '';
+
+if($content_title_text_image_image){
+    $content_title_text_image_image_url = lsd_get_thumb($content_title_text_image_image, 'large');
+}
+$content_title_text_image_label_link = get_sub_field('content_title_text_image_label_link');
+$content_title_text_image_url_link = get_sub_field('content_title_text_image_url_link');
+?>
 <div class="strate-background-grey">
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-6">
                 <div class="container-text-strate">
+                    <?php if($content_title_text_image_title_1): ?>
                     <h2 class="title medium">
-                        About us
+                        <?= $content_title_text_image_title_1; ?>
                     </h2>
+                    <?php endif; ?>
+                    <?php if($content_title_text_image_title_2): ?>
                     <h3 class="title medium italic">
-                        What's the project
+                        <?= $content_title_text_image_title_2; ?>
                     </h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi asperiores consectetur consequatur corporis hic illo maiores nobis nulla obcaecati, odio optio placeat, quos, similique suscipit tempora totam vitae voluptas!
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi asperiores consectetur consequatur corporis hic illo maiores nobis nulla obcaecati, odio optio placeat, quos, similique suscipit tempora totam vitae voluptas!
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi asperiores consectetur consequatur corporis hic illo maiores nobis nulla obcaecati, odio optio placeat, quos, similique suscipit tempora totam vitae voluptas!
-                    </p>
+                    <?php endif; ?>
 
-                    <a href="" class="link small-border">En savoir plus</a>
+                    <?= ($content_title_text_image_text) ? $content_title_text_image_text : ''; ?>
+
+                    <?php if($content_title_text_image_url_link && $content_title_text_image_label_link): ?>
+                        <a href="<?= $content_title_text_image_url_link; ?>" class="link small-border"><?= $content_title_text_image_label_link; ?></a>
+                    <?php endif; ?>
                 </div>
             </div>
+            <?php if(isset($content_title_text_image_image_url) && $content_title_text_image_image_url): ?>
             <div class="container-image">
-                <img src="https://images.pexels.com/photos/1830433/pexels-photo-1830433.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
+                <img src="<?= $content_title_text_image_image_url; ?>" alt="">
             </div>
+            <?php endif; ?>
         </div>
     </div>
 </div>

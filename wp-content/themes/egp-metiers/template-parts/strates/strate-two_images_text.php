@@ -1,27 +1,57 @@
+<?php
+$content_two_images_text_image_1 = get_sub_field('content_two_images_text_image_1');
+$content_two_images_text_image_1_url = '';
 
+if($content_two_images_text_image_1){
+    $content_two_images_text_image_1_url = lsd_get_thumb($content_two_images_text_image_1, 'large');
+}
+
+$content_two_images_text_image_2 = get_sub_field('content_two_images_text_image_2');
+$content_two_images_text_image_2_url = '';
+if($content_two_images_text_image_2){
+    $content_two_images_text_image_2_url = lsd_get_thumb($content_two_images_text_image_2, 'large');
+}
+
+$content_two_images_text_title_1 = get_sub_field('content_two_images_text_title_1');
+$content_two_images_text_title_2 = get_sub_field('content_two_images_text_title_2');
+$content_two_images_text_text    = get_sub_field('content_two_images_text_text');
+$content_two_images_text_label_link = get_sub_field('content_two_images_text_label_link');
+$content_two_images_text_url_link = get_sub_field('content_two_images_text_url_link');
+?>
 <div class="strate-two-image-text">
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-6">
-                <img src="https://images.pexels.com/photos/5878761/pexels-photo-5878761.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="image-1" width="95%" alt="">
+                <?php if(isset($content_two_images_text_image_1_url) && $content_two_images_text_image_1_url): ?>
+                <img src="<?= $content_two_images_text_image_1_url; ?>" class="image-1" width="95%" alt="">
+                <?php endif; ?>
             </div>
             <div class="col-sm-6">
+                <?php if($content_two_images_text_title_1): ?>
                 <h2 class="title medium">
-                    Nos dernières
+                    <?= $content_two_images_text_title_1; ?>
                 </h2>
-                <h3 class="title medium italic">
-                    Réalisations
-                </h3>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam aspernatur commodi distinctio dolor, dolorem ea error, est excepturi facilis neque nobis, non officiis possimus quaerat repellendus tenetur veritatis voluptate.
-                </p>
-                <a href="" class="link small-border">
-                    Read more
-                </a>
+                <?php endif; ?>
 
+                <?php if($content_two_images_text_title_2): ?>
+                <h3 class="title medium italic">
+                    <?= $content_two_images_text_title_2 ?>
+                </h3>
+                <?php endif; ?>
+
+                <?= ($content_two_images_text_text)? $content_two_images_text_text : ''; ?>
+
+                <?php if($content_two_images_text_label_link && $content_two_images_text_url_link): ?>
+                <a href="<?= $content_two_images_text_url_link; ?>" class="link small-border">
+                    <?= $content_two_images_text_label_link; ?>
+                </a>
+                <?php endif; ?>
+
+                <?php if(isset($content_two_images_text_image_2_url) && $content_two_images_text_image_2_url): ?>
                 <div class="container-image">
-                    <img src="https://images.pexels.com/photos/5689042/pexels-photo-5689042.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="image-2" width="80%" alt="">
+                    <img src="<?= $content_two_images_text_image_2_url ?>" class="image-2" width="80%" alt="">
                 </div>
+                <?php endif; ?>
             </div>
         </div>
     </div>

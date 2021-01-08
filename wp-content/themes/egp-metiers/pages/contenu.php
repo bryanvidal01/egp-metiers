@@ -21,8 +21,8 @@ if($parentPost){
 
 // Childs posts
 $all_locations = get_pages( array(
-    'post_type'         => 'page', //here's my CPT
-    'post_status'       => array( 'publish' ) //my custom choice
+    'post_type'         => 'page',
+    'post_status'       => array( 'publish' )
 ) );
 
 $inherited_locations = get_page_children( $currentPost, $all_locations );
@@ -59,14 +59,38 @@ foreach ($inherited_locations as $inherited_location){
                 </div>
             </div>
 
-            <?php lsd_get_template_part('strates', 'strate', 'text_image'); ?>
-            <?php lsd_get_template_part('strates', 'strate', 'realisation_slider'); ?>
-            <?php lsd_get_template_part('strates', 'strate', 'text_defilement'); ?>
-            <?php lsd_get_template_part('strates', 'strate', 'reassurance'); ?>
-            <?php lsd_get_template_part('strates', 'strate', 'two_images_text'); ?>
-            <?php lsd_get_template_part('strates', 'strate', 'image_full'); ?>
-            <?php lsd_get_template_part('strates', 'strate', 'text_image'); ?>
-            <?php lsd_get_template_part('strates', 'strate', 'text_defilement'); ?>
+
+            <?php if( have_rows('content') ):
+                while ( have_rows('content') ) : the_row();
+                    if( get_row_layout() == 'content_title_text_image' ):
+
+                        lsd_get_template_part('strates', 'strate', 'text_image');
+
+                    elseif( get_row_layout() == 'content_slider' ):
+
+                        lsd_get_template_part('strates', 'strate', 'realisation_slider');
+
+                    elseif( get_row_layout() == 'content_title_text_text_bg' ):
+
+                        lsd_get_template_part('strates', 'strate', 'text_defilement');
+
+                    elseif( get_row_layout() == 'content_reassurance' ):
+                        lsd_get_template_part('strates', 'strate', 'reassurance');
+
+                    elseif( get_row_layout() == 'content_two_images_text' ):
+                        lsd_get_template_part('strates', 'strate', 'two_images_text');
+
+                    elseif( get_row_layout() == 'content_image_full' ):
+                        lsd_get_template_part('strates', 'strate', 'image_full');
+
+                    elseif( get_row_layout() == 'content_iframe' ):
+                        lsd_get_template_part('strates', 'strate', 'iframe');
+
+                    endif;
+                endwhile;
+            else :
+
+            endif; ?>
 
         </div>
     </div>

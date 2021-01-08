@@ -8,7 +8,18 @@ function wp_custom_post_type() {
             ),
             'public'      => true,
             'has_archive' => false,
-            'publicly_queryable'  => 'false'
+        )
+    );
+
+    register_post_type('devis',
+        array(
+            'labels'      => array(
+                'name'          => __('Devis', 'lsd_lang'),
+                'singular_name' => __('Devis', 'lsd_lang'),
+            ),
+            'public'      => true,
+            'has_archive' => false,
+            'publicly_queryable'  => false
         )
     );
 }

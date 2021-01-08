@@ -56,6 +56,8 @@ add_image_size( 'imageStratePartners', 800, 800, true );
 
 add_image_size( 'presentationPortraitSize', 1000, 1200, true );
 add_image_size( 'presentationPaysageSize', 1920, 1080, true );
+add_image_size( 'pushGalerie', 960, 540, true );
+add_image_size( 'pushGalerieSingle', 960, 750, true );
 
 
 
@@ -108,18 +110,6 @@ function lsd_get_template_part($folder = '', $slug, $name, $args = '') {
 register_nav_menu( 'primary', 'Primary Menu' );
 
 
-function remove_menu_items() {
-    global $menu;
-    $restricted = array(__('Recommendations'), __('WooCommerce'), __('Produits'), __('Marketing'), __('Statistiques'), __('Articles'), __('Médias'));
-    end ($menu);
-    while (prev($menu)){
-        $value = explode(' ',$menu[key($menu)][0]);
-
-        if (in_array($value[0] != NULL?$value[0]:"" , $restricted)){
-            unset($menu[key($menu)]);}
-    }
-}
-add_action('admin_menu', 'remove_menu_items');
 
 
 
@@ -130,3 +120,148 @@ function set_posts_per_page_for_towns_cpt( $query ) {
 }
 add_action( 'pre_get_posts', 'set_posts_per_page_for_towns_cpt' );
 
+
+function get_custom_field($fieldName) {
+    if(get_field($fieldName)){
+        return get_field($fieldName);
+    }elseif(get_sub_field($fieldName)){
+        return get_sub_field($fieldName);
+    }else{
+        return '';
+    }
+}
+
+
+
+function send_quote_request(){
+
+    $error = false;
+    $dataReturn = [];
+
+    if($_POST['societe'] && $_POST['secondName'] && $_POST['fistName'] && $_POST['emailAdress']){
+        $post_devis_society_name = $_POST['societe'];
+        $post_devis_profil_name = $_POST['profil'];
+        $post_devis_name = $_POST['secondName'];
+        $post_devis_first_name = $_POST['fistName'];
+        $post_devis_email = $_POST['emailAdress'];
+        $post_devis_phone_number = $_POST['phoneNumber'];
+        $post_devis_project_adress = $_POST['adressProject'];
+        $post_devis_timing_project = $_POST['timing'];
+        $post_devis_about_project = $_POST['sayMore'];
+
+        $my_post = array(
+            'post_title'    => 'Demande de devis de ' . $post_devis_first_name . ' ' . $post_devis_name,
+            'post_status'   => 'draft',
+            'post_type' => "devis"
+        );
+
+        $post_id = wp_insert_post( $my_post );
+
+
+        if (!empty($_FILES['upload_attachment']['name'][0])) {
+
+            require_once( ABSPATH . 'wp-admin/includes/image.php' );
+            require_once( ABSPATH . 'wp-admin/includes/file.php' );
+            require_once( ABSPATH . 'wp-admin/includes/media.php' );
+
+
+            $files = $_FILES['upload_attachment'];
+            $count = 0;
+            $galleryImages = array();
+
+
+            foreach ($files['name'] as $count => $value) {
+
+                if ($files['name'][$count]) {
+
+                    $file = array(
+                        'name'     => $files['name'][$count],
+                        'type'     => $files['type'][$count],
+                        'tmp_name' => $files['tmp_name'][$count],
+                        'error'    => $files['error'][$count],
+                        'size'     => $files['size'][$count]
+                    );
+
+                    $upload_overrides = array( 'test_form' => false );
+                    $upload = wp_handle_upload($file, $upload_overrides);
+
+
+                    // $filename should be the path to a file in the upload directory.
+                    $filename = $upload['file'];
+
+                    // The ID of the post this attachment is for.
+                    $parent_post_id = $post_id;
+
+                    // Check the type of tile. We'll use this as the 'post_mime_type'.
+                    $filetype = wp_check_filetype( basename( $filename ), null );
+
+
+                    if($filetype['type'] != false){
+                        // Get the path to the upload directory.
+                        $wp_upload_dir = wp_upload_dir();
+
+                        // Prepare an array of post data for the attachment.
+                        $attachment = array(
+                            'guid'           => $wp_upload_dir['url'] . '/' . basename( $filename ),
+                            'post_mime_type' => $filetype['type'],
+                            'post_title'     => preg_replace( '/\.[^.]+$/', '', basename( $filename ) ),
+                            'post_content'   => '',
+                            'post_status'    => 'inherit'
+                        );
+
+                        // Insert the attachment.
+                        $attach_id = wp_insert_attachment( $attachment, $filename, $parent_post_id );
+
+                        // Make sure that this file is included, as wp_generate_attachment_metadata() depends on it.
+                        require_once( ABSPATH . 'wp-admin/includes/image.php' );
+
+                        // Generate the metadata for the attachment, and update the database record.
+                        $attach_data = wp_generate_attachment_metadata( $attach_id, $filename );
+                        wp_update_attachment_metadata( $attach_id, $attach_data );
+
+                        array_push($galleryImages, $attach_id);
+                    }else{
+                        $error = true;
+                    }
+
+
+                }
+
+                $count++;
+
+                // add images to the gallery field
+                if(!$error){
+                    update_field('post_devis_files', $galleryImages, $post_id);
+                    update_field('post_devis_society_name', $post_devis_society_name, $post_id);
+                    update_field('post_devis_profil_name', $post_devis_profil_name, $post_id);
+                    update_field('post_devis_name', $post_devis_name, $post_id);
+                    update_field('post_devis_first_name', $post_devis_first_name, $post_id);
+                    update_field('post_devis_email', $post_devis_email, $post_id);
+                    update_field('post_devis_phone_number', $post_devis_phone_number, $post_id);
+                    update_field('post_devis_society_name', $post_devis_society_name, $post_id);
+                    update_field('post_devis_project_adress', $post_devis_project_adress, $post_id);
+                    update_field('post_devis_timing_project', $post_devis_timing_project, $post_id);
+                    update_field('post_devis_about_project', $post_devis_about_project, $post_id);
+                }
+
+            }
+        }
+    }else{
+        $error = true;
+    }
+
+    if(!$error){
+        $dataReturn = [
+            'validation' => true,
+            'message' => 'Votre demande a bien été prise en compte.'
+        ];
+
+        return $dataReturn;
+    }else{
+        $dataReturn = [
+            'validation' => false,
+            'message' => 'Une erreur est survenue. Veuillez réésayer.'
+        ];
+        return $dataReturn;
+    }
+}

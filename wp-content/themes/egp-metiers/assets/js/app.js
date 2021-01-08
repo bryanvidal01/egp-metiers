@@ -49,6 +49,57 @@ $(document).ready(function () {
         }
     });
 
+
+    // Input File
+    $('input[type="file"]').change(function(){
+        console.log($('input[type="file"]'));
+
+        var inp = $(this);
+        $('.listFiles').html('');
+        console.log(inp[0].files.item(0).name);
+
+        for (var i = 0; i < inp[0].files.length; ++i) {
+            $('.listFiles').append('<li>'+ inp[0].files.item(i).name + '</li>');
+        }
+    });
+
+
+    $('.form input').keypress(function(){
+        $(this).removeClass('is-require');
+    })
+    $('.form').submit(function(event){
+        var inputs = $(this).find('.require');
+        var consent = $(this).find('.consent');
+        var error = 0;
+        inputs.each(function(){
+           var el = $(this);
+
+           if(el.val() == ''){
+               el.addClass('is-require');
+               error++;
+           }else{
+               el.removeClass('is-require');
+           }
+        });
+
+        if(error > 0){
+            $('html, body').animate({
+                scrollTop: $(".form").offset().top - 100
+            }, 700);
+        }
+
+        if($('.form .consent:checked').length == 0){
+            $('.form .consent').parent().addClass('is-require');
+            error++;
+        }else{
+            $('.form .consent').parent().removeClass('is-require');
+        }
+
+        if(error > 0){
+            event.preventDefault();
+        }
+    });
+
 });
 
 

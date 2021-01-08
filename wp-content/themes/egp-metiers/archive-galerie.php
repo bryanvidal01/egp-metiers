@@ -23,78 +23,45 @@ get_header();
     <div class="padding-strate">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-4">
-                    <a href="" class="push-galerie-link">
-                        <img src="https://images.pexels.com/photos/5877912/pexels-photo-5877912.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
-                        <h2 class="title">Caisson Lumineux</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        <p>Galerie contenant <span>28 réalisations</span></p>
 
-                        <div class="link small-border">
-                            Voir les réalisations
-                        </div>
-                    </a>
-                </div>
-                <div class="col-sm-4">
-                    <a href="" class="push-galerie-link">
-                        <img src="https://images.pexels.com/photos/5877912/pexels-photo-5877912.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
-                        <h2 class="title">Caisson Lumineux</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        <p>Galerie contenant <span>28 réalisations</span></p>
+                <?php
+                $args = array(
+                    'post_type' => 'galerie',
+                    'posts_per_page' => -1
+                );
+                $the_query = new WP_Query( $args );
 
-                        <div class="link small-border">
-                            Voir les réalisations
-                        </div>
-                    </a>
-                </div>
-                <div class="col-sm-4">
-                    <a href="" class="push-galerie-link">
-                        <img src="https://images.pexels.com/photos/5877912/pexels-photo-5877912.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
-                        <h2 class="title">Caisson Lumineux</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        <p>Galerie contenant <span>28 réalisations</span></p>
+                if ( $the_query->have_posts() ):
+                    while ( $the_query->have_posts() ):
+                        $the_query->the_post();
+                        $imageID = get_field('post_galerie_thumbnail');
+                        $imageURL = '';
+                        if($imageID){
+                            $imageURL = lsd_get_thumb($imageID, 'pushGalerie');
+                        }
+                        $description = get_field('post_galerie_description');
 
-                        <div class="link small-border">
-                            Voir les réalisations
-                        </div>
-                    </a>
-                </div>
-                <div class="col-sm-4">
-                    <a href="" class="push-galerie-link">
-                        <img src="https://images.pexels.com/photos/5877912/pexels-photo-5877912.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
-                        <h2 class="title">Caisson Lumineux</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        <p>Galerie contenant <span>28 réalisations</span></p>
+                        $allImagesGalerie = get_field('images_galerie');
+                        $allImagesGalerieNumber = count($allImagesGalerie);
+                    ?>
+                        <div class="col-sm-4">
+                            <a href="<?= get_the_permalink(); ?>" class="push-galerie-link">
+                                <?php if($imageURL): ?>
+                                    <img src="<?= $imageURL; ?>" alt="">
+                                <?php endif; ?>
+                                <h2 class="title"><?= get_the_title(); ?></h2>
+                                <?= ($description) ? $description : ''; ?>
+                                <p>Galerie contenant <span><?= $allImagesGalerieNumber; ?> réalisations</span></p>
 
-                        <div class="link small-border">
-                            Voir les réalisations
+                                <div class="link small-border">
+                                    Voir les réalisations
+                                </div>
+                            </a>
                         </div>
-                    </a>
-                </div>
-                <div class="col-sm-4">
-                    <a href="" class="push-galerie-link">
-                        <img src="https://images.pexels.com/photos/5877912/pexels-photo-5877912.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
-                        <h2 class="title">Caisson Lumineux</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        <p>Galerie contenant <span>28 réalisations</span></p>
-
-                        <div class="link small-border">
-                            Voir les réalisations
-                        </div>
-                    </a>
-                </div>
-                <div class="col-sm-4">
-                    <a href="" class="push-galerie-link">
-                        <img src="https://images.pexels.com/photos/5877912/pexels-photo-5877912.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
-                        <h2 class="title">Caisson Lumineux</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        <p>Galerie contenant <span>28 réalisations</span></p>
-
-                        <div class="link small-border">
-                            Voir les réalisations
-                        </div>
-                    </a>
-                </div>
+                    <?php endwhile;
+                endif;
+                wp_reset_postdata();
+                ?>
             </div>
         </div>
     </div>
