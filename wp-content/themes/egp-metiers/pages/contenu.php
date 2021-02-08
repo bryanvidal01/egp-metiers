@@ -22,7 +22,8 @@ if($parentPost){
 // Childs posts
 $all_locations = get_pages( array(
     'post_type'         => 'page',
-    'post_status'       => array( 'publish' )
+    'post_status'       => array( 'publish' ),
+    'sort_column'        => 'menu_order'
 ) );
 
 $inherited_locations = get_page_children( $currentPost, $all_locations );
@@ -59,6 +60,7 @@ foreach ($inherited_locations as $inherited_location){
                 </div>
             </div>
 
+            <div class="container-wiziwyg">
 
             <?php if( have_rows('content') ):
                 while ( have_rows('content') ) : the_row();
@@ -91,6 +93,7 @@ foreach ($inherited_locations as $inherited_location){
             else :
 
             endif; ?>
+            </div>
 
         </div>
     </div>

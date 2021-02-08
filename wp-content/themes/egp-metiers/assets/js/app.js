@@ -203,6 +203,91 @@ window.onload = function(){
             el.addClass('visible');
         }, delay);
     });
+
+
+
+
+    $('a').click(function(event){
+
+        if($(this).attr('href') == '#popin-call-back'){
+            event.preventDefault();
+            $('.popin-call').fadeIn();
+        }
+    });
+
+    $('.popin-call .cross').click(function(){
+        $('.popin-call').fadeOut();
+        $('.step-1').fadeIn();
+        $('.step-2').fadeOut();
+    });
+
+    $('.popin-call .link-step-2').click(function(event){
+        $('.step-1').fadeOut();
+        event.preventDefault();
+
+        setTimeout(function(){
+            $('.step-2').fadeIn();
+        }, 300);
+    });
+
+    $('.contact-form-call').submit(function(){
+
+        event.preventDefault();
+
+        var userName = $('.contact-form-call').find('#userName');
+        var userSecondName = $('.contact-form-call').find('#userSecondName');
+        var userMail = $('.contact-form-call').find('#userMail');
+        var userPhone = $('.contact-form-call').find('#userPhone');
+
+
+        var error = 0;
+        if(userName.val() == ''){
+            userName.addClass('is-require');
+            error++;
+        }else{
+            userName.removeClass('is-require');
+        }
+
+        if(userSecondName.val() == ''){
+            userSecondName.addClass('is-require');
+            error++;
+        }else{
+            userSecondName.removeClass('is-require');
+        }
+
+        if(userMail.val() == ''){
+            userMail.addClass('is-require');
+            error++;
+        }else{
+            userMail.removeClass('is-require');
+        }
+
+        if(userPhone.val() == ''){
+            userPhone.addClass('is-require');
+            error++;
+        }else{
+            userPhone.removeClass('is-require');
+        }
+
+        if(error == 0){
+            $.post(
+                ParamsData.wp_ajax_url,
+                {
+                    'action': 'send_message',
+                    'userName': userName.val(),
+                    'userSecondName' : userSecondName.val(),
+                    'userMail' : userMail.val(),
+                    'userPhone' : userPhone.val(),
+                },
+                function (response) {
+                    if(response.code == 200){
+                        $('.contact-form-call').find('.popin .info-return').html(response.message)
+                        $('.contact-form-call').find('.popin').fadeIn();
+                    }
+                }
+            );
+        }
+    });
 }
 
 

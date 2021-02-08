@@ -11,19 +11,46 @@
     <script  src='<?php echo get_template_directory_uri();?>/assets/js/jquery.js'></script>
     <script  src='<?php echo get_template_directory_uri();?>/assets/js/lightbox-plus-jquery.min.js'></script>
     <script src="<?php echo get_template_directory_uri(); ?>/assets/js/slick.js"></script>
-    <script  src='<?php echo get_template_directory_uri();?>/assets/js/app.js'></script>
+
     <?php wp_head(); ?>
+
+    <?php $colorTheme = get_field('params_color_theme', 'option'); ?>
+
+    <style>
+        .info-bulle{
+            background: <?php echo $colorTheme; ?>
+        }
+        .info-bulle:before{
+            border-bottom: 15px solid <?php echo $colorTheme; ?>;
+        }
+    </style>
 </head>
 
 <body <?php body_class(); ?>>
 
+<?php
+    $logoWhite = get_field('params_logo_white', 'option');
 
+    if($logoWhite){
+        $logoWhiteUrl = lsd_get_thumb($logoWhite, 'full');
+    }
+    $logoDark = get_field('params_logo_dark', 'option');
+
+    if($logoDark){
+        $logoDarkUrl = lsd_get_thumb($logoDark, 'full');
+    }
+?>
 <header>
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-6 col-6">
                 <a href="<?php echo get_site_url(); ?>" class="header-logo">
-                    <?php lsd_get_template_part('icons','header', 'logo'); ?>
+                    <?php if(isset($logoWhiteUrl) && $logoWhiteUrl): ?>
+                    <img src="<?= $logoWhiteUrl; ?>" class="logo white" alt="Logo blanc <?php get_bloginfo( 'name' ); ?>">
+                    <?php endif; ?>
+                    <?php if(isset($logoDarkUrl) && $logoDarkUrl): ?>
+                    <img src="<?= $logoDarkUrl; ?>" class="logo dark" alt="Logo foncé <?php get_bloginfo( 'name' ); ?>">
+                    <?php endif; ?>
                 </a>
             </div>
 
@@ -57,18 +84,7 @@
         </div>
 
         <div class="info-left">
-            <ul class="social-menu-icons">
-                <li>
-                    <a href="">
-                        <?php lsd_get_template_part('icons','icon', 'facebook'); ?>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <?php lsd_get_template_part('icons','icon', 'instagram'); ?>
-                    </a>
-                </li>
-            </ul>
+            <?php lsd_get_template_part('general', 'bloc', 'social'); ?>
         </div>
     </div>
 </header>

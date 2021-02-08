@@ -23,7 +23,7 @@ $content_two_images_text_url_link = get_sub_field('content_two_images_text_url_l
         <div class="row">
             <div class="col-sm-6">
                 <?php if(isset($content_two_images_text_image_1_url) && $content_two_images_text_image_1_url): ?>
-                <img src="<?= $content_two_images_text_image_1_url; ?>" class="image-1" width="95%" alt="">
+                <img src="<?= $content_two_images_text_image_1_url; ?>" class="image-1" width="95%" alt="<?= $content_two_images_text_title_1; ?> <?= $content_two_images_text_title_2 ?> <?= get_the_title(); ?>">
                 <?php endif; ?>
             </div>
             <div class="col-sm-6">
@@ -49,7 +49,7 @@ $content_two_images_text_url_link = get_sub_field('content_two_images_text_url_l
 
                 <?php if(isset($content_two_images_text_image_2_url) && $content_two_images_text_image_2_url): ?>
                 <div class="container-image">
-                    <img src="<?= $content_two_images_text_image_2_url ?>" class="image-2" width="80%" alt="">
+                    <img src="<?= $content_two_images_text_image_2_url ?>" class="image-2" width="80%" alt="<?= $content_two_images_text_title_1; ?> <?= $content_two_images_text_title_2 ?> <?= get_the_title(); ?>">
                 </div>
                 <?php endif; ?>
             </div>

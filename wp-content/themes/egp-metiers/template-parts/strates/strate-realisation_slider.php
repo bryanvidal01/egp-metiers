@@ -44,7 +44,7 @@
                 if(isset($imageURL) && $imageURL):
             ?>
                 <div>
-                    <img src="<?= $imageURL; ?>" alt="">
+                    <img src="<?= $imageURL; ?>" alt="<?= $content_slider_title_1; ?> <?= $content_slider_title_2; ?> <?= get_bloginfo( 'name' ); ?>">
                 </div>
             <?php
                 endif;

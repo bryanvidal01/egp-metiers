@@ -67,6 +67,7 @@ $galerieImages = get_field('images_galerie');
         <div class="row">
 
             <?php
+            $image = 1;
             foreach ($galerieImages as $galerieImage):
                 $galerieImageID = $galerieImage['ID'];
                 $galerieImageURL = '';
@@ -80,11 +81,11 @@ $galerieImages = get_field('images_galerie');
                 <div class="col-sm-4">
                     <div class="push-image-galerie">
                         <a href="<?= $galerieImageURLLarge; ?>" data-lightbox="sets">
-                            <img src="<?= $galerieImageURL; ?>" alt="">
+                            <img src="<?= $galerieImageURL; ?>" alt="<?= get_the_title(); ?> image <?php echo $image;?>">
                         </a>
                     </div>
                 </div>
-            <?php endif; endforeach; ?>
+            <?php endif; $image++; endforeach; ?>
 
         </div>
     </div>

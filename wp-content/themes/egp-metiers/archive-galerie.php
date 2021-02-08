@@ -47,7 +47,7 @@ get_header();
                         <div class="col-sm-4">
                             <a href="<?= get_the_permalink(); ?>" class="push-galerie-link">
                                 <?php if($imageURL): ?>
-                                    <img src="<?= $imageURL; ?>" alt="">
+                                    <img src="<?= $imageURL; ?>" alt="Réalisations <?= get_the_title(); ?>">
                                 <?php endif; ?>
                                 <h2 class="title"><?= get_the_title(); ?></h2>
                                 <?= ($description) ? $description : ''; ?>

@@ -10,11 +10,18 @@ if($content_title_text_image_image){
 }
 $content_title_text_image_label_link = get_sub_field('content_title_text_image_label_link');
 $content_title_text_image_url_link = get_sub_field('content_title_text_image_url_link');
+
+$content_title_text_image_position = get_sub_field('content_title_text_image_position');
 ?>
-<div class="strate-background-grey">
+<div class="strate-background-grey <?= ($content_title_text_image_position) ? 'image-left': ''; ?>">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-6">
+            <?php if(isset($content_title_text_image_image_url) && $content_title_text_image_image_url && $content_title_text_image_position): ?>
+                <div class="container-image">
+                    <img src="<?= $content_title_text_image_image_url; ?>" alt="<?= $content_title_text_image_title_1; ?> <?= $content_title_text_image_title_2; ?>">
+                </div>
+            <?php endif; ?>
+            <div class="col-sm-6 <?= ($content_title_text_image_position) ? 'offset-6': ''; ?>">
                 <div class="container-text-strate">
                     <?php if($content_title_text_image_title_1): ?>
                     <h2 class="title medium">
@@ -34,9 +41,9 @@ $content_title_text_image_url_link = get_sub_field('content_title_text_image_url
                     <?php endif; ?>
                 </div>
             </div>
-            <?php if(isset($content_title_text_image_image_url) && $content_title_text_image_image_url): ?>
+            <?php if(isset($content_title_text_image_image_url) && $content_title_text_image_image_url && !$content_title_text_image_position): ?>
             <div class="container-image">
-                <img src="<?= $content_title_text_image_image_url; ?>" alt="">
+                <img src="<?= $content_title_text_image_image_url; ?>" alt="<?= $content_title_text_image_title_1; ?> <?= $content_title_text_image_title_2; ?>">
             </div>
             <?php endif; ?>
         </div>

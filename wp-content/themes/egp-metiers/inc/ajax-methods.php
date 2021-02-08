@@ -1,33 +1,36 @@
 <?php
-add_action( 'wp_ajax_example', 'example_callback' );
-add_action( 'wp_ajax_nopriv_example', 'example_callback' );
-function example_callback()
+
+add_action( 'wp_ajax_send_message', 'send_message' );
+add_action( 'wp_ajax_nopriv_send_message', 'send_message' );
+
+function send_message()
 {
-    // Security
-    checkNonce('exampleNonce');
+    $userName = $_POST['userName'];
+    $userSecondName = $_POST['userSecondName'];
+    $userMail = $_POST['userMail'];
+    $userPhone = $_POST['userPhone'];
 
-    $var = isset($_POST['var']) ? filter_var($_POST['var'], FILTER_SANITIZE_STRING) : '';
 
-    if ( !empty($var) ) {
+    if($userName && $userSecondName && $userMail && $userPhone){
+        $to = get_field('choix_two_email', 'option');
+        $subject = $userName . ' ' . $userSecondName . ' vous a envoyé(e) un message';
 
-        $response['status'] = 200;
+        $messageToSend = 'Nom : ' . $userName . '<br/>';
+        $messageToSend .= 'Prénom : ' . $userSecondName . '<br/>';
+        $messageToSend .= 'Adresse mail : ' . $userMail . '<br/>';
 
-        ob_start();
-        ?>
+        $messageToSend .= 'Téléphone : ' . $userPhone . '<br/>';
 
-        <!-- HTML -->
-        
-        <?php
-        $response['content'] = ob_get_clean();
-        $message = '';
+        $headers = array('Content-Type: text/html; charset=UTF-8');
 
+        wp_mail( $to, $subject, $messageToSend, $headers);
+
+        $returnDatas['message'] = 'Votre message a bien été envoyé';
+        $returnDatas['code'] = 200;
     }else{
-
-        $response['status'] = 300;
-        $message = '';
+        $returnDatas['message'] = 'Une erreur est survenue lors de l’envoi du message';
+        $returnDatas['code'] = 300;
     }
 
-    $response['message'] = $message;
-
-    wp_send_json( $response );
+    wp_send_json( $returnDatas );
 }

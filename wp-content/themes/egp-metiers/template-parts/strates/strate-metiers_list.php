@@ -24,7 +24,7 @@
 
         <div class="container-image native">
             <?php if(isset($content_list_works_image_native_url) && $content_list_works_image_native_url): ?>
-            <img src="<?= $content_list_works_image_native_url; ?>" alt="">
+            <img src="<?= $content_list_works_image_native_url; ?>" alt="<?= $content_list_works_menu_name; ?>">
             <?php endif; ?>
         </div>
 
@@ -51,7 +51,7 @@
                         </h2>
                         <?php if(isset($imageURL) && $imageURL): ?>
                         <div class="container-image">
-                            <img src="<?= $imageURL; ?>" alt="">
+                            <img src="<?= $imageURL; ?>" alt="<?= $content_list_works_list_item['content_list_works_list_item_title_1']; ?> <?= $content_list_works_list_item['content_list_works_list_item_title_2']; ?>">
                         </div>
                         <?php endif; ?>
                     </a>

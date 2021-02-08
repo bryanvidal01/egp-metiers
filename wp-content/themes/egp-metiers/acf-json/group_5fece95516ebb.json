@@ -137,6 +137,25 @@
                             },
                             "default_value": "",
                             "placeholder": ""
+                        },
+                        {
+                            "key": "field_600f072cbed18",
+                            "label": "Image à gauche",
+                            "name": "content_title_text_image_position",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 0,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
                         }
                     ],
                     "min": "",
@@ -640,5 +659,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1609364089
+    "modified": 1611597673
 }

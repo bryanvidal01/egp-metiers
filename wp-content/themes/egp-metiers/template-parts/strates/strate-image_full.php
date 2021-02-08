@@ -8,5 +8,5 @@
 ?>
 
 <div class="strate-image-full">
-    <img src="<?= $content_image_full_image_full_url; ?>" alt="">
+    <img src="<?= $content_image_full_image_full_url; ?>" alt="<?php get_bloginfo( 'name' ); ?> <?= get_the_title(); ?>">
 </div>

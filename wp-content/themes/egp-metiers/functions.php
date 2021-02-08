@@ -2,7 +2,7 @@
 define('THEME_DIR', get_template_directory() . '/');
 define('THEME_URL', get_template_directory_uri() . '/');
 define('HOME_URL', get_home_url());
-define('AJAX_URL', THEME_URL . 'ajax-min.php');
+define('AJAX_URL', admin_url( 'admin-ajax.php' ));
 
 //Correspondance de page
 /*define('PAGE_PRESENTATION', get_field('params_page_presentation', 'option'));
@@ -19,6 +19,7 @@ define('PAGE_COMPTE', get_field('params_page_compte', 'option'));*/
 
 
 define('PAGE_GALERIE', get_field('params_galerie_id', 'option'));
+define('PAGE_DEVIS', get_field('params_devis_id', 'option'));
 
 require_once( __DIR__ . '/inc/datatypes.php');
 require_once( __DIR__ . '/inc/configuration.php');
@@ -39,11 +40,13 @@ function scripts_site(){
 
         wp_enqueue_style( 'style_principal', get_template_directory_uri() . '/assets/stylesheets/style.css' );
 
+        wp_enqueue_script( 'script', get_template_directory_uri() . '/assets/js/app.js', array(), '1.0.0', true );
+
         $dataToBePassed = array(
             'wp_ajax_url' => AJAX_URL,
             'exampleNonce' => wp_create_nonce('exampleNonce'),
         );
-        wp_localize_script('script-js', 'ParamsData', $dataToBePassed );
+        wp_localize_script('script', 'ParamsData', $dataToBePassed );
 
     }
 }
@@ -58,6 +61,7 @@ add_image_size( 'presentationPortraitSize', 1000, 1200, true );
 add_image_size( 'presentationPaysageSize', 1920, 1080, true );
 add_image_size( 'pushGalerie', 960, 540, true );
 add_image_size( 'pushGalerieSingle', 960, 750, true );
+add_image_size( 'heroNotHome', 1920, 700, true );
 
 
 

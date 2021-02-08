@@ -151,6 +151,7 @@ footer{
     font-size: 1vw;
     transform: translateY(-50%);
     z-index: 30;
+    left: 0;
     opacity: 1;
     color: #FFF;
     mix-blend-mode: difference;
@@ -178,6 +179,18 @@ footer{
   }
 }
 
+
+#cookie-law-info-bar{
+  width: 90% !important;
+  left: 5% !important;
+
+  #cookie_action_close_header{
+    padding: 15px 36px;
+    background-color: #000 !important;
+    font-weight: 800;
+    font-size: 12px;
+  }
+}
 
 
 @-webkit-keyframes rotating {
