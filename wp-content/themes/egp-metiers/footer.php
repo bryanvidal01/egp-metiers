@@ -3,6 +3,12 @@
     $params_menu_footer_2 = get_field('params_menu_footer_2', 'option');
     $params_menu_footer_siege = get_field('params_menu_footer_siege', 'option');
 
+    $logoWhite = get_field('params_logo_white', 'option');
+
+    if($logoWhite){
+        $logoWhiteUrl = lsd_get_thumb($logoWhite, 'full');
+    }
+
 ?>
 
 <a href="#popin-call-back" class="info-bulle">
@@ -19,7 +25,9 @@
         <div class="row">
             <div class="col-sm-3">
                 <a href="<?php echo get_site_url(); ?>" class="header-logo">
-                    <?php lsd_get_template_part('icons','header', 'logo'); ?>
+                    <?php if(isset($logoWhiteUrl) && $logoWhiteUrl): ?>
+                        <img src="<?= $logoWhiteUrl; ?>" class="logo white" alt="Logo blanc <?php get_bloginfo( 'name' ); ?>" width="180">
+                    <?php endif; ?>
                 </a>
             </div>
             <div class="col-sm-3">
@@ -66,7 +74,7 @@
         <div class="row">
             <div class="col-sm-12 text-center">
                 <p class="small">
-                    ©2020 Enseigne Gambetta
+                    ©<?php echo date("Y"); ?> Enseigne Gambetta
                 </p>
             </div>
         </div>

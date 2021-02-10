@@ -129,20 +129,7 @@ window.onload = function(){
 
     // Sticky Nav
 
-    var elementToStick = $('.navigation-sub-page');
 
-    if(elementToStick.length > 0){
-        var positionElement = elementToStick.offset().top;
-        $(window).scroll(function(){
-            var currentScroll = $(window).scrollTop();
-
-            if(currentScroll + 102 >= positionElement){
-                elementToStick.addClass('is-sticky');
-            }else{
-                elementToStick.removeClass('is-sticky');
-            }
-        });
-    }
 
     document.getElementById('percent-load').innerHTML = 100;
     $('#masque').css('transform', 'translate(100%, 0)');
@@ -153,7 +140,20 @@ window.onload = function(){
 
 
     if(!isMobile()){
+        var elementToStick = $('.navigation-sub-page');
 
+        if(elementToStick.length > 0){
+            var positionElement = elementToStick.offset().top;
+            $(window).scroll(function(){
+                var currentScroll = $(window).scrollTop();
+
+                if(currentScroll + 102 >= positionElement){
+                    elementToStick.addClass('is-sticky');
+                }else{
+                    elementToStick.removeClass('is-sticky');
+                }
+            });
+        }
     }
 
     $(window).scroll(function(){

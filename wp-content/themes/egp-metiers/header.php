@@ -8,6 +8,17 @@
     <link rel="icon" type="image/png" href="<?php echo get_template_directory_uri();?>/assets/images/icon.png" />
     <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/assets/css/style.css">
 
+    <?php
+        $params_favicon = get_field('params_favicon', 'option');
+
+        if($params_favicon){
+            $params_favicon_url = lsd_get_thumb($params_favicon, 'full');
+        }
+    ?>
+    <?php if($params_favicon_url): ?>
+    <link rel="icon" type="image/jpg" href="<?= $params_favicon_url; ?>" />
+    <?php endif; ?>
+
     <script  src='<?php echo get_template_directory_uri();?>/assets/js/jquery.js'></script>
     <script  src='<?php echo get_template_directory_uri();?>/assets/js/lightbox-plus-jquery.min.js'></script>
     <script src="<?php echo get_template_directory_uri(); ?>/assets/js/slick.js"></script>
@@ -84,7 +95,7 @@
         </div>
 
         <div class="info-left">
-            <?php lsd_get_template_part('general', 'bloc', 'social'); ?>
+            <?php //lsd_get_template_part('general', 'bloc', 'social'); ?>
         </div>
     </div>
 </header>
