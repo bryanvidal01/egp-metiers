@@ -40,6 +40,11 @@
     font-size: 12px;
     line-height: 22px;
     margin-top: 3px;
+
+    img{
+      width: 11px;
+      margin-top: -2px;
+    }
   }
   .text-bulle{
     font-size: 14px;
@@ -477,10 +482,17 @@
   }
   li{
     border-bottom: 1px solid #F1F1F1;
-    padding: 15px 0;
+    padding: 15px 20px;
 
     &.active{
       font-weight: 600;
+    }
+
+    &:first-child{
+      padding-left: 0;
+      a{
+        font-size: 23px;
+      }
     }
   }
 }
@@ -632,6 +644,13 @@
     &.is-require{
       border-color: #b31e1e;
     }
+  }
+
+  select{
+    background: url('../images/arrow-select.svg');
+    background-repeat: no-repeat;
+    background-size:  15px;
+    background-position: 98% 14px;
   }
 
   textarea{

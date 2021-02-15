@@ -51,11 +51,23 @@ if($_POST){
                         Je suis
                     </label>
                     <select name="profil" id="profil">
-                        <option value="option 1" name="profil">
-                            option 1
+                        <option value="Architecte">
+                            Architecte
                         </option>
-                        <option value="option 2">
-                            option 2
+                        <option value="Commerçant">
+                            Commerçant
+                        </option>
+                        <option value="Collectivité">
+                            Collectivité
+                        </option>
+                        <option value="Hôtel">
+                            Hôtel
+                        </option>
+                        <option value="Bureaux">
+                            Bureaux
+                        </option>
+                        <option value="Restaurants">
+                            Restaurants
                         </option>
                     </select>
                 </div>
@@ -83,14 +95,7 @@ if($_POST){
                     <label for="timing">
                         Timing du projet
                     </label>
-                    <select name="timing" id="timing">
-                        <option value="Timing 1">
-                            Timing 1
-                        </option>
-                        <option value="Timing 2">
-                            Timing 2
-                        </option>
-                    </select>
+                    <input type="text" name="timing" id="timing" placeholder="Date">
                 </div>
                 <div class="col-sm-12">
                     <div class="container-uploads text-center">
@@ -99,7 +104,9 @@ if($_POST){
                             JOINDRE DES FICHIERS
                         </div>
                         <p>
-                            Ici vous pouvez joindre tous les documents qui vous semblent utiles à la compréhension de votre projet : plans de facade, photos de la facade actuelle ou du support, maquette, croquis, inspirations, demande d'autorisation préalable, APD, etc
+                            Ici vous pouvez déposer tous les documents qui vous semblent être utiles à la compréhension de votre projet.<br/>
+                            <strong>Types de fichiers :</strong> maquettes, plans de façade, photos de la façade actuelle, dossier de voirie, APD, inspirations, croquis…<br/>
+                            <strong>Formats de fichiers :</strong> pour vos logos et fichiers d’impressions, merci de privilégiez les formats vectoriels : .pdf
                         </p>
 
                         <ul class="listFiles">

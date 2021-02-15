@@ -13,7 +13,7 @@
 
 <a href="#popin-call-back" class="info-bulle">
     <div class="icon-round">
-        ?
+        <img src="<?= get_template_directory_uri(); ?>/assets/images/phone.png" alt="">
     </div>
     <div class="text-bulle">
         Je souhaite <div class="font-italic">être accompagné</div>

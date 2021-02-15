@@ -17,7 +17,7 @@
                 <div class="col-sm-3 col-6 text-center">
                     <div class="item-reassurance">
                         <?php if(isset($iconURL) && $iconURL): ?>
-                        <img src="<?= $iconURL; ?>" height="30" alt="<?= $reassurance_item['params_reassurances_title']; ?>">
+                        <img src="<?= $iconURL; ?>" height="100" alt="<?= $reassurance_item['params_reassurances_title']; ?>">
                         <?php endif; ?>
                         <p class="title">
                             <?= $reassurance_item['params_reassurances_title']; ?>

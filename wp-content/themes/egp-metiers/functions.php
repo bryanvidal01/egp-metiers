@@ -233,25 +233,42 @@ function send_quote_request(){
 
                 $count++;
 
-                // add images to the gallery field
-                if(!$error){
-                    update_field('post_devis_files', $galleryImages, $post_id);
-                    update_field('post_devis_society_name', $post_devis_society_name, $post_id);
-                    update_field('post_devis_profil_name', $post_devis_profil_name, $post_id);
-                    update_field('post_devis_name', $post_devis_name, $post_id);
-                    update_field('post_devis_first_name', $post_devis_first_name, $post_id);
-                    update_field('post_devis_email', $post_devis_email, $post_id);
-                    update_field('post_devis_phone_number', $post_devis_phone_number, $post_id);
-                    update_field('post_devis_society_name', $post_devis_society_name, $post_id);
-                    update_field('post_devis_project_adress', $post_devis_project_adress, $post_id);
-                    update_field('post_devis_timing_project', $post_devis_timing_project, $post_id);
-                    update_field('post_devis_about_project', $post_devis_about_project, $post_id);
-                }
-
             }
         }
     }else{
         $error = true;
+    }
+
+    // add images to the gallery field
+    if(!$error){
+        update_field('post_devis_files', $galleryImages, $post_id);
+        update_field('post_devis_profil_name', $post_devis_profil_name, $post_id);
+        update_field('post_devis_name', $post_devis_name, $post_id);
+        update_field('post_devis_first_name', $post_devis_first_name, $post_id);
+        update_field('post_devis_email', $post_devis_email, $post_id);
+        update_field('post_devis_phone_number', $post_devis_phone_number, $post_id);
+        update_field('post_devis_society_name', $post_devis_society_name, $post_id);
+        update_field('post_devis_project_adress', $post_devis_project_adress, $post_id);
+        update_field('post_devis_timing_project', $post_devis_timing_project, $post_id);
+        update_field('post_devis_about_project', $post_devis_about_project, $post_id);
+
+
+        $to = get_field('choix_two_email', 'option');
+        $subject = $post_devis_name . ' ' . $post_devis_first_name . ' vous a envoyé(e) un message';
+
+        $messageToSend = 'Nom : ' . $post_devis_name . '<br/>';
+        $messageToSend .= 'Prénom : ' . $post_devis_first_name . '<br/>';
+        $messageToSend .= 'Adresse mail : ' . $post_devis_email . '<br/>';
+        $messageToSend .= 'Profil : ' . $post_devis_profil_name . '<br/>';
+        $messageToSend .= 'Numéro de téléphone : ' . $post_devis_phone_number . '<br/>';
+        $messageToSend .= 'Adresse du projet : ' . $post_devis_project_adress . '<br/>';
+        $messageToSend .= 'Nom de la société : ' . $post_devis_society_name . '<br/>';
+        $messageToSend .= 'Timing du projet : ' . $post_devis_timing_project . '<br/>';
+        $messageToSend .= 'À propros : ' . $post_devis_about_project . '<br/>';
+
+        $headers = array('Content-Type: text/html; charset=UTF-8');
+
+        wp_mail( $to, $subject, $messageToSend, $headers);
     }
 
     if(!$error){
